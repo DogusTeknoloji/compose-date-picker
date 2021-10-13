@@ -24,7 +24,7 @@ allprojects {
 The easiest way to add the Compose Date Picker library to your project is by adding it as a dependency to your  `build.gradle`
 ```css
 dependencies {
-	        implementation 'com.github.DogusTeknoloji:compose-date-picker:1.0.0'
+	        implementation 'com.github.DogusTeknoloji:compose-date-picker:1.0.1'
 	}
 ```
 ## Usage Compose Date Picker
