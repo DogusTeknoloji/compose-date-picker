@@ -31,6 +31,7 @@ fun ComposeCalendar(
     if (showOnlyMonth && showOnlyYear) {
         throw IllegalStateException("'showOnlyMonth' and 'showOnlyYear' states cannot be true at the same time")
     } else {
+
         var minYear = 1970
         var minMonth = 0
         var maxYear = 2100
@@ -54,7 +55,14 @@ fun ComposeCalendar(
 
         val calendar = Calendar.getInstance(locale)
         val currentMonth = calendar.get(Calendar.MONTH)
-        val currentYear = calendar.get(Calendar.YEAR)
+        var currentYear = calendar.get(Calendar.YEAR)
+
+        if (minYear>currentYear){
+            currentYear = minYear
+        }
+        if (maxYear<currentYear){
+            currentYear = maxYear
+        }
 
         val months = (DateFormatSymbols(locale).shortMonths).toList()
         val monthList = months.mapIndexed { index, name ->
