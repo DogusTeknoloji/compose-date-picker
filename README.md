@@ -13,19 +13,19 @@ Support for Android 5.0 (API level 21) and up.
 ## Implementation
 Add it in your root build.gradle at the end of repositories:
 
-```css
+```gradle
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+	repositories {
+		...
+		maven { url 'https://jitpack.io' }
 	}
+}
 ```
 The easiest way to add the Compose Date Picker library to your project is by adding it as a dependency to your  `build.gradle`
-```css
+```gradle
 dependencies {
-	        implementation 'com.github.DogusTeknoloji:compose-date-picker:1.0.1'
-	}
+	implementation 'com.github.DogusTeknoloji:compose-date-picker:1.0.1'
+}
 ```
 ## Usage Compose Date Picker
 
