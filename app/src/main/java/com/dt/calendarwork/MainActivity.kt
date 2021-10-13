@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
 fun MainScreen() {
     val calendar = Calendar.getInstance()
     calendar.set(Calendar.YEAR, 2010)
-    calendar.set(Calendar.MONTH, 11)
+    calendar.set(Calendar.MONTH, 6)
     val calendarMax = Calendar.getInstance()
     calendarMax.set(Calendar.YEAR, 2032)
     calendarMax.set(Calendar.MONTH, 9)
@@ -49,8 +49,8 @@ fun MainScreen() {
         if (open) {
             ComposeCalendar(minDate = calendar.time,
                 maxDate = calendarMax.time,
-                locale = Locale("tr"),
-                title = "Tarih Seçiniz",
+                locale = Locale("en"),
+                title = "Select Date",
                 listener = object : SelectDateListener {
                     override fun onDateSelected(date: Date) {
                         Log.i("DENEME", date.toString())
