@@ -26,7 +26,8 @@ fun ComposeCalendar(
     showOnlyYear: Boolean = false,
     themeColor:Color = Color(0xFF614FF0),
     negativeButtonTitle:String = "CANCEL",
-    positiveButtonTitle:String = "OK"
+    positiveButtonTitle:String = "OK",
+    monthViewType: MonthViewType? = MonthViewType.ONLY_MONTH
 ) {
     if (showOnlyMonth && showOnlyYear) {
         throw IllegalStateException("'showOnlyMonth' and 'showOnlyYear' states cannot be true at the same time")
@@ -115,18 +116,38 @@ fun ComposeCalendar(
                     themeColor=themeColor)
                 Crossfade(targetState = showMonths) {
                     when (it) {
-                        true -> CalendarMonthView(selectedMonth = selectedMonth,
-                            setMonth = setMonth,
-                            minMonth = minMonth,
-                            maxMonth = maxMonth,
-                            setShowMonths = setShowMonths,
-                            minYear = minYear,
-                            maxYear = maxYear,
-                            selectedYear = selectedYear,
-                            monthList = monthList,
-                            setHeight = setHeight,
-                            showOnlyMonth = showOnlyMonth,
-                            themeColor=themeColor)
+                        true -> {
+                            if (monthViewType == MonthViewType.ONLY_NUMBER_ONE_COLUMN){
+                                CalendarMonthViewOneColumn(selectedMonth = selectedMonth,
+                                    setMonth = setMonth,
+                                    minMonth = minMonth,
+                                    maxMonth = maxMonth,
+                                    setShowMonths = setShowMonths,
+                                    minYear = minYear,
+                                    maxYear = maxYear,
+                                    selectedYear = selectedYear,
+                                    monthList = monthList,
+                                    setHeight = setHeight,
+                                    showOnlyMonth = showOnlyMonth,
+                                    themeColor=themeColor
+                                )
+                            }
+                            else{
+                                CalendarMonthView(selectedMonth = selectedMonth,
+                                    setMonth = setMonth,
+                                    minMonth = minMonth,
+                                    maxMonth = maxMonth,
+                                    setShowMonths = setShowMonths,
+                                    minYear = minYear,
+                                    maxYear = maxYear,
+                                    selectedYear = selectedYear,
+                                    monthList = monthList,
+                                    setHeight = setHeight,
+                                    showOnlyMonth = showOnlyMonth,
+                                    themeColor=themeColor,
+                                    monthViewType = monthViewType)
+                            }
+                        }
                         false -> CalendarYearView(selectedYear = selectedYear,
                             setYear = setYear,
                             minYear = minYear,
@@ -143,4 +164,10 @@ fun ComposeCalendar(
             }
         }
     }
+}
+enum class MonthViewType {
+    ONLY_MONTH,
+    ONLY_NUMBER,
+    ONLY_NUMBER_ONE_COLUMN,
+    BOTH_NUMBER_AND_MONTH
 }

@@ -30,7 +30,8 @@ fun CalendarMonthView(
     setShowMonths:(Boolean)->Unit,
     setHeight:(Int)->Unit,
     showOnlyMonth:Boolean,
-    themeColor:Color
+    themeColor:Color,
+    monthViewType: MonthViewType?
 ) {
 
     val NUMBER_OF_ROW_ITEMS = 3
@@ -55,9 +56,10 @@ fun CalendarMonthView(
                         minYear = minYear,
                         maxYear = maxYear,
                         selectedYear = selectedYear,
-                    setShowMonths = setShowMonths,
+                        setShowMonths = setShowMonths,
                         showOnlyMonth = showOnlyMonth,
-                        themeColor = themeColor
+                        themeColor = themeColor,
+                        monthViewType = monthViewType
                     )
                     numberOfElement += 1
                 }
@@ -81,9 +83,16 @@ fun MonthItem(
     selectedYear: Int,
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
-    themeColor:Color
+    themeColor:Color,
+    monthViewType: MonthViewType?
 ) {
     val enabled = checkDate(minYear = minYear,maxYear = maxYear,selectedYear = selectedYear,maxMonth = maxMonth,minMonth = minMonth,numberOfElement = numberOfElement)
+    val monthText:String = when(monthViewType){
+        MonthViewType.ONLY_MONTH -> month.name.uppercase()
+        MonthViewType.ONLY_NUMBER -> numberOfElement.plus(1).toString()
+        MonthViewType.BOTH_NUMBER_AND_MONTH -> month.name.uppercase() + " " + "(${numberOfElement.plus(1)})"
+        else -> month.name.uppercase()
+    }
     Box(modifier = Modifier
         .background(color = if (month.name == selectedMonth) themeColor else Color.Transparent,
             shape = RoundedCornerShape(100))
@@ -98,7 +107,7 @@ fun MonthItem(
             }
         },
         contentAlignment = Alignment.Center) {
-        Text(text = month.name.uppercase(),
+        Text(text = monthText,
             color = if (enabled && month.name == selectedMonth) Color.White
             else if (enabled) Color.Black
             else Color.Gray)
