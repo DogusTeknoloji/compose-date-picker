@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.dt.calendarwork.ui.theme.CalendarWorkTheme
 import com.dt.composedatepicker.ComposeCalendar
+import com.dt.composedatepicker.MonthViewType
 import com.dt.composedatepicker.SelectDateListener
 import java.util.*
 
@@ -51,6 +52,7 @@ fun MainScreen() {
                 maxDate = calendarMax.time,
                 locale = Locale("en"),
                 title = "Select Date",
+                monthViewType = null,
                 listener = object : SelectDateListener {
                     override fun onDateSelected(date: Date) {
                         Log.i("DENEME", date.toString())
