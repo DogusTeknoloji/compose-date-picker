@@ -8,8 +8,9 @@ Support for Android 5.0 (API level 21) and up.
 **Screenshots**
 | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20%281%29.png?raw=true) | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20%282%29.png?raw=true) |
 |--|--|
-| ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20%283%29.png?raw=true) |  |
-
+| ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20%283%29.png?raw=true) | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(5).png)  | 
+|||
+| ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(4).png) 
 ## Implementation
 Add it in your root build.gradle at the end of repositories:
 
