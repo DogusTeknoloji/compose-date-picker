@@ -52,7 +52,7 @@ fun MainScreen() {
                 maxDate = calendarMax.time,
                 locale = Locale("en"),
                 title = "Select Date",
-                monthViewType = null,
+                monthViewType = MonthViewType.ONLY_NUMBER_ONE_COLUMN,
                 listener = object : SelectDateListener {
                     override fun onDateSelected(date: Date) {
                         Log.i("DENEME", date.toString())

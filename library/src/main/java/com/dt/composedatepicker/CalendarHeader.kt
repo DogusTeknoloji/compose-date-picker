@@ -16,15 +16,18 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CalendarHeader(
-    selectedMonth: String,
+    selectedMonth: MonthData,
     selectedYear: Int,
     showMonths: Boolean,
     setShowMonths: (Boolean) -> Unit,
     title: String,
     showOnlyMonth: Boolean,
     showOnlyYear: Boolean,
-    themeColor:Color
+    themeColor:Color,
+    monthViewType: MonthViewType?
 ) {
+    val monthAsNumber = String.format("%02d",selectedMonth.index.plus(1))
+    val monthText = if (monthViewType==MonthViewType.ONLY_MONTH) selectedMonth.name.uppercase() else monthAsNumber
     Column(modifier = Modifier
         .fillMaxWidth()
         .background(themeColor),
@@ -35,7 +38,8 @@ fun CalendarHeader(
             color = Color.White)
         Row() {
             if (!showOnlyYear) {
-                Text(text = selectedMonth.uppercase(),
+                Text(
+                    text = monthText,
                     fontSize = 35.sp,
                     modifier = Modifier
                         .padding(bottom = 20.dp,
@@ -43,6 +47,9 @@ fun CalendarHeader(
                             end = if (showOnlyMonth) 0.dp else 10.dp)
                         .clickable { setShowMonths(true) },
                     color = if (showMonths) Color.White else Color.LightGray)
+            }
+            if (!showOnlyMonth && !showOnlyYear){
+                Text(text = "/",fontSize = 35.sp,color = Color.White)
             }
             if (!showOnlyMonth) {
                 Text(text = selectedYear.toString(),

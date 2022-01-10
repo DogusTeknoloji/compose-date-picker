@@ -106,14 +106,17 @@ fun ComposeCalendar(
         Card(modifier = Modifier
             .fillMaxWidth(0.9f)) {
             Column(modifier = Modifier.fillMaxWidth()) {
-                CalendarHeader(selectedMonth = selectedMonth.name,
+                CalendarHeader(
+                    selectedMonth = selectedMonth,
                     selectedYear = selectedYear,
                     showMonths = showMonths,
                     setShowMonths = setShowMonths,
                     title = title,
                     showOnlyMonth = showOnlyMonth,
                     showOnlyYear = showOnlyYear,
-                    themeColor=themeColor)
+                    themeColor=themeColor,
+                    monthViewType  = monthViewType
+                )
                 Crossfade(targetState = showMonths) {
                     when (it) {
                         true -> {
