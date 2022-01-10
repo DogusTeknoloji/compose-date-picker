@@ -39,14 +39,26 @@ dependencies {
       showOnlyYear: Boolean = false,  // Display only year picker
       themeColor:Color = Color(0xFF614FF0), // Set picker color 
       negativeButtonTitle:String = "CANCEL",  // Set negative button text
-      positiveButtonTitle:String = "OK"  // Set positive button text
+      positiveButtonTitle:String = "OK",  // Set positive button text
+      monthViewType: MonthViewType? = MonthViewType.ONLY_MONTH // Set month view type
     )
+    
 **Listener**
 
     interface SelectDateListener {  
         fun onDateSelected(date: Date)  
         fun onCanceled()  
     }
+    
+**MonthViewType**
+
+    enum class MonthViewType {
+        ONLY_MONTH,
+        ONLY_NUMBER,
+        ONLY_NUMBER_ONE_COLUMN, // Just like Year view
+        BOTH_NUMBER_AND_MONTH
+    }
+    
 **Compose Sample**
 
     val calendar = Calendar.getInstance()  
