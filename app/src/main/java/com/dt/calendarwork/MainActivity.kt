@@ -34,13 +34,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val calendar = Calendar.getInstance()
-    calendar.set(Calendar.YEAR, 2022)
-    calendar.set(Calendar.MONTH, 1)
+    calendar.set(Calendar.YEAR, 2021)
+    calendar.set(Calendar.MONTH, 5)
     calendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val calendarMax = Calendar.getInstance()
-    calendarMax.set(Calendar.YEAR, 2032)
-    calendarMax.set(Calendar.MONTH, 9)
+    calendarMax.set(Calendar.YEAR, 2022)
+    calendarMax.set(Calendar.MONTH, 0)
     calendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val (open, setOpen) = remember {

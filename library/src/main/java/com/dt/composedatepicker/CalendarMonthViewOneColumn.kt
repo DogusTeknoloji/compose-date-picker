@@ -108,7 +108,7 @@ private fun checkDate(
     maxMonth: Int,
     numberOfElement: Int,
 ): Boolean {
-    if (minMonth == 0) return true
+
     if (minYear == maxYear) return numberOfElement in minMonth..maxMonth
     if (selectedYear == minYear) {
         return numberOfElement >= minMonth
