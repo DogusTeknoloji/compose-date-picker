@@ -34,11 +34,14 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val calendar = Calendar.getInstance()
-    calendar.set(Calendar.YEAR, 2010)
-    calendar.set(Calendar.MONTH, 6)
+    calendar.set(Calendar.YEAR, 2022)
+    calendar.set(Calendar.MONTH, 1)
+    calendar.set(Calendar.DAY_OF_MONTH, 1)
+
     val calendarMax = Calendar.getInstance()
     calendarMax.set(Calendar.YEAR, 2032)
     calendarMax.set(Calendar.MONTH, 9)
+    calendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val (open, setOpen) = remember {
         mutableStateOf(true)
@@ -48,7 +51,8 @@ fun MainScreen() {
         .fillMaxSize()
         .background(color = Color.Gray), contentAlignment = Alignment.Center) {
         if (open) {
-            ComposeCalendar(minDate = calendar.time,
+            ComposeCalendar(
+                minDate = calendar.time,
                 maxDate = calendarMax.time,
                 locale = Locale("en"),
                 title = "Select Date",
