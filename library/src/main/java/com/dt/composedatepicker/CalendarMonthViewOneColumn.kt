@@ -14,7 +14,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -29,18 +28,17 @@ fun CalendarMonthViewOneColumn(
     maxYear: Int,
     selectedYear: Int,
     setShowMonths: (Boolean) -> Unit,
-    setHeight: (Int) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
 ) {
 
-    LazyColumn(modifier = Modifier
-        .padding(horizontal = 20.dp)
-        .padding(vertical = 20.dp)
-        .fillMaxHeight(0.7f)
-        .fillMaxWidth()
-        .onGloballyPositioned { setHeight(it.size.height) },
-        horizontalAlignment = Alignment.CenterHorizontally) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxHeight(0.85f)
+            .fillMaxWidth()
+            .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         items(items = monthList) { item ->
             MonthItemOneColumn(
                 month = item,
@@ -75,28 +73,34 @@ fun MonthItemOneColumn(
     showOnlyMonth: Boolean,
     themeColor: Color,
 ) {
-    val enabled = checkDate(minYear = minYear,
+    val enabled = checkDate(
+        minYear = minYear,
         maxYear = maxYear,
         selectedYear = selectedYear,
         maxMonth = maxMonth,
         minMonth = minMonth,
-        numberOfElement = index)
+        numberOfElement = index
+    )
 
     Box(modifier = Modifier
         .padding(vertical = 6.dp)
-        .clickable(indication = null,
+        .clickable(
+            indication = null,
             interactionSource = remember { MutableInteractionSource() },
-            enabled = enabled) {
+            enabled = enabled
+        ) {
             setMonth(month)
             if (!showOnlyMonth) {
                 setShowMonths(false)
             }
         }) {
-        Text(text = index.plus(1).toString(),
+        Text(
+            text = index.plus(1).toString(),
             fontSize = if (month.name == selectedMonth) 35.sp else 30.sp,
             color = if (enabled && month.name == selectedMonth) themeColor
             else if (enabled) Color.Black
-            else Color.Gray)
+            else Color.Gray
+        )
     }
 }
 
