@@ -13,12 +13,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import java.text.DateFormatSymbols
+import java.time.Year
 import java.util.*
 
 @Composable
 fun ComposeCalendar(
     minDate: Date? = null,
     maxDate: Date? = null,
+    initialDate: Date? = null,
     locale: Locale = Locale.getDefault(),
     title: String = "",
     listener: SelectDateListener,
@@ -37,6 +39,11 @@ fun ComposeCalendar(
         var minMonth = 0
         var maxYear = 2100
         var maxMonth = 11
+
+        var initialCalendar = Calendar.getInstance(locale)
+        var currentMonth = initialCalendar.get(Calendar.MONTH)
+        var currentYear = initialCalendar.get(Calendar.YEAR)
+
         minDate?.let {
             val calendarMin = Calendar.getInstance()
             calendarMin.time = minDate
@@ -49,10 +56,12 @@ fun ComposeCalendar(
             maxMonth = calendarMax.get(Calendar.MONTH)
             maxYear = calendarMax.get(Calendar.YEAR)
         }
+        initialDate?.let {
+            initialCalendar.time = initialDate
+            currentMonth = initialCalendar.get(Calendar.MONTH)
+            currentYear = initialCalendar.get(Calendar.YEAR)
+        }
 
-        val calendar = Calendar.getInstance(locale)
-        val currentMonth = calendar.get(Calendar.MONTH)
-        var currentYear = calendar.get(Calendar.YEAR)
 
         if (minYear > currentYear) {
             currentYear = minYear
