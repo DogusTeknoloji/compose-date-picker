@@ -82,6 +82,8 @@ fun MonthItemOneColumn(
         numberOfElement = index
     )
 
+    val monthAsNumber = String.format("%02d",index.plus(1))
+
     Box(modifier = Modifier
         .padding(vertical = 6.dp)
         .clickable(
@@ -95,7 +97,7 @@ fun MonthItemOneColumn(
             }
         }) {
         Text(
-            text = index.plus(1).toString(),
+            text = monthAsNumber,
             fontSize = if (month.name == selectedMonth) 35.sp else 30.sp,
             color = if (enabled && month.name == selectedMonth) themeColor
             else if (enabled) Color.Black

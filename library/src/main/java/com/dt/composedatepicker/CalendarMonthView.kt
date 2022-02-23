@@ -102,13 +102,14 @@ fun MonthItem(
         minMonth = minMonth,
         numberOfElement = numberOfElement
     )
+
+    val monthAsNumber = String.format("%02d",numberOfElement.plus(1))
+
     val monthText: String = when (monthViewType) {
         MonthViewType.ONLY_MONTH -> month.name.uppercase()
-        MonthViewType.ONLY_NUMBER -> numberOfElement.plus(1).toString()
+        MonthViewType.ONLY_NUMBER -> monthAsNumber
         MonthViewType.BOTH_NUMBER_AND_MONTH -> month.name.uppercase() + " " + "(${
-            numberOfElement.plus(
-                1
-            )
+            monthAsNumber
         })"
         else -> month.name.uppercase()
     }
