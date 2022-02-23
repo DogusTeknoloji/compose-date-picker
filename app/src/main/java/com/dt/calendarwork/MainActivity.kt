@@ -6,7 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,38 +36,52 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val calendar = Calendar.getInstance()
-    calendar.set(Calendar.YEAR, 2021)
-    calendar.set(Calendar.MONTH, 5)
+    calendar.set(Calendar.YEAR, 2022)
+    calendar.set(Calendar.MONTH, 1)
     calendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val calendarMax = Calendar.getInstance()
-    calendarMax.set(Calendar.YEAR, 2022)
+    calendarMax.set(Calendar.YEAR, 2023)
     calendarMax.set(Calendar.MONTH, 0)
-    calendar.set(Calendar.DAY_OF_MONTH, 1)
+    calendarMax.set(Calendar.DAY_OF_MONTH, 1)
+
+    val initialCalendar = Calendar.getInstance()
+    initialCalendar.set(Calendar.YEAR, 2022)
+    initialCalendar.set(Calendar.MONTH, 3)
+    initialCalendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val (open, setOpen) = remember {
         mutableStateOf(true)
     }
 
-    Box(Modifier
-        .fillMaxSize()
-        .background(color = Color.Gray), contentAlignment = Alignment.Center) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Color.Gray),
+        contentAlignment = Alignment.Center
+    ) {
         if (open) {
-            ComposeCalendar(
-                minDate = calendar.time,
-                maxDate = calendarMax.time,
-                locale = Locale("en"),
-                title = "Select Date",
-                monthViewType = MonthViewType.ONLY_NUMBER_ONE_COLUMN,
-                listener = object : SelectDateListener {
-                    override fun onDateSelected(date: Date) {
-                        Log.i("DENEME", date.toString())
-                    }
+            Box(
+                Modifier
+                    .fillMaxWidth(0.8f)
+                    .fillMaxHeight(0.7f)) {
+                ComposeCalendar(
+                    minDate = calendar.time,
+                    maxDate = calendarMax.time,
+                    initialDate = initialCalendar.time,
+                    locale = Locale("en"),
+                    title = "Select Date",
+                    monthViewType = MonthViewType.ONLY_NUMBER_ONE_COLUMN,
+                    listener = object : SelectDateListener {
+                        override fun onDateSelected(date: Date) {
+                            Log.i("DENEME", date.toString())
+                        }
 
-                    override fun onCanceled() {
-                        setOpen(false)
-                    }
-                })
+                        override fun onCanceled() {
+                            setOpen(false)
+                        }
+                    })
+            }
         }
     }
 }
