@@ -15,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.sp
 import com.dt.calendarwork.ui.theme.CalendarWorkTheme
 import com.dt.composedatepicker.ComposeCalendar
 import com.dt.composedatepicker.MonthViewType
@@ -71,6 +72,7 @@ fun MainScreen() {
                     initialDate = initialCalendar.time,
                     locale = Locale("en"),
                     title = "Select Date",
+                    buttonTextSize = 15.sp,
                     monthViewType = MonthViewType.ONLY_NUMBER_ONE_COLUMN,
                     listener = object : SelectDateListener {
                         override fun onDateSelected(date: Date) {
