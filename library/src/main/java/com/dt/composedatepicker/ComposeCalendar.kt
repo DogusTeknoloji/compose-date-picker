@@ -12,8 +12,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.TextUnit
 import java.text.DateFormatSymbols
-import java.time.Year
 import java.util.*
 
 @Composable
@@ -29,6 +29,7 @@ fun ComposeCalendar(
     themeColor: Color = Color(0xFF614FF0),
     negativeButtonTitle: String = "CANCEL",
     positiveButtonTitle: String = "OK",
+    buttonTextSize: TextUnit = TextUnit.Unspecified,
     monthViewType: MonthViewType? = MonthViewType.ONLY_MONTH
 ) {
     if (showOnlyMonth && showOnlyYear) {
@@ -175,6 +176,7 @@ fun ComposeCalendar(
                     onPositiveClick = { listener.onDateSelected(selectedDate) },
                     onCancelClick = { listener.onCanceled() },
                     themeColor = themeColor,
+                    buttonTextSize = buttonTextSize,
                     negativeButtonTitle = negativeButtonTitle,
                     positiveButtonTitle = positiveButtonTitle
                 )

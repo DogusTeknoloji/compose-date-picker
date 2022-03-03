@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -18,7 +19,8 @@ fun CalendarBottom(
     onCancelClick: () -> Unit,
     themeColor: Color,
     negativeButtonTitle: String,
-    positiveButtonTitle: String
+    positiveButtonTitle: String,
+    buttonTextSize: TextUnit
 ) {
     Row(
         modifier = Modifier
@@ -29,11 +31,13 @@ fun CalendarBottom(
     ) {
         Text(text = negativeButtonTitle,
             color = themeColor,
+            fontSize = buttonTextSize,
             modifier = Modifier
                 .padding(end = 20.dp)
                 .clickable { onCancelClick() })
         Text(text = positiveButtonTitle,
             color = themeColor,
+            fontSize = buttonTextSize,
             modifier = Modifier.clickable { onPositiveClick() })
     }
 }
