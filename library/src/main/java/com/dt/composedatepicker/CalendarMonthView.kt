@@ -34,6 +34,7 @@ fun CalendarMonthView(
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
+    unselectedColor: Color,
     monthViewType: MonthViewType?
 ) {
 
@@ -67,6 +68,7 @@ fun CalendarMonthView(
                         setShowMonths = setShowMonths,
                         showOnlyMonth = showOnlyMonth,
                         themeColor = themeColor,
+                        unselectedColor = unselectedColor,
                         monthViewType = monthViewType
                     )
                     numberOfElement += 1
@@ -92,6 +94,7 @@ fun MonthItem(
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
+    unselectedColor: Color,
     monthViewType: MonthViewType?
 ) {
     val enabled = checkDate(
@@ -136,7 +139,7 @@ fun MonthItem(
         Text(
             text = monthText,
             color = if (enabled && month.name == selectedMonth) Color.White
-            else if (enabled) Color.Black
+            else if (enabled) unselectedColor
             else Color.Gray
         )
     }
