@@ -30,6 +30,7 @@ fun CalendarMonthViewOneColumn(
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
+    unselectedColor: Color
 ) {
 
     LazyColumn(
@@ -53,6 +54,7 @@ fun CalendarMonthViewOneColumn(
                 setShowMonths = setShowMonths,
                 showOnlyMonth = showOnlyMonth,
                 themeColor = themeColor,
+                unselectedColor = unselectedColor
             )
         }
     }
@@ -72,6 +74,7 @@ fun MonthItemOneColumn(
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
+    unselectedColor: Color,
 ) {
     val enabled = checkDate(
         minYear = minYear,
@@ -82,7 +85,7 @@ fun MonthItemOneColumn(
         numberOfElement = index
     )
 
-    val monthAsNumber = String.format("%02d",index.plus(1))
+    val monthAsNumber = String.format("%02d", index.plus(1))
 
     Box(modifier = Modifier
         .padding(vertical = 6.dp)
@@ -100,7 +103,7 @@ fun MonthItemOneColumn(
             text = monthAsNumber,
             fontSize = if (month.name == selectedMonth) 35.sp else 30.sp,
             color = if (enabled && month.name == selectedMonth) themeColor
-            else if (enabled) Color.Black
+            else if (enabled) unselectedColor
             else Color.Gray
         )
     }

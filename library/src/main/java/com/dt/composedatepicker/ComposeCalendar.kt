@@ -27,6 +27,7 @@ fun ComposeCalendar(
     showOnlyMonth: Boolean = false,
     showOnlyYear: Boolean = false,
     themeColor: Color = Color(0xFF614FF0),
+    unselectedColor: Color = Color.Black,
     negativeButtonTitle: String = "CANCEL",
     positiveButtonTitle: String = "OK",
     buttonTextSize: TextUnit = TextUnit.Unspecified,
@@ -98,7 +99,10 @@ fun ComposeCalendar(
         LaunchedEffect(key1 = selectedYear, key2 = selectedMonth) {
             calendarDate.set(Calendar.YEAR, selectedYear)
             calendarDate.set(Calendar.MONTH, selectedMonth.index)
-            calendarDate.set(Calendar.DAY_OF_MONTH,1) //For example, if the date is 30 march and we click february, then it shows 2March because february does not have 30 days, so we set default day to 1
+            calendarDate.set(
+                Calendar.DAY_OF_MONTH,
+                1
+            ) //For example, if the date is 30 march and we click february, then it shows 2March because february does not have 30 days, so we set default day to 1
             selectedDate = calendarDate.time
         }
         LaunchedEffect(key1 = selectedYear) {
@@ -145,7 +149,8 @@ fun ComposeCalendar(
                                     selectedYear = selectedYear,
                                     monthList = monthList,
                                     showOnlyMonth = showOnlyMonth,
-                                    themeColor = themeColor
+                                    themeColor = themeColor,
+                                    unselectedColor = unselectedColor
                                 )
                             } else {
                                 CalendarMonthView(
@@ -160,6 +165,7 @@ fun ComposeCalendar(
                                     monthList = monthList,
                                     showOnlyMonth = showOnlyMonth,
                                     themeColor = themeColor,
+                                    unselectedColor = unselectedColor,
                                     monthViewType = monthViewType
                                 )
                             }
