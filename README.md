@@ -38,7 +38,8 @@ dependencies {
       listener: SelectDateListener, // Set Listener for selected date
       showOnlyMonth: Boolean = false,  // Display only month picker
       showOnlyYear: Boolean = false,  // Display only year picker
-      themeColor:Color = Color(0xFF614FF0), // Set picker color 
+      themeColor: Color = Color(0xFF614FF0), // Set picker color 
+      unselectedColor: Color = Color.White, // Set unselectedText color, when using dark mode you need to handle it
       negativeButtonTitle:String = "CANCEL",  // Set negative button text
       positiveButtonTitle:String = "OK",  // Set positive button text
       monthViewType: MonthViewType? = MonthViewType.ONLY_MONTH // Set month view type
