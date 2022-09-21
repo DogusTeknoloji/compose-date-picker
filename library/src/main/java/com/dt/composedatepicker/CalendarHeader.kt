@@ -21,8 +21,7 @@ fun CalendarHeader(
     showMonths: Boolean,
     setShowMonths: (Boolean) -> Unit,
     title: String,
-    showOnlyMonth: Boolean,
-    showOnlyYear: Boolean,
+    calendarType: CalendarType,
     themeColor:Color,
     monthViewType: MonthViewType?
 ) {
@@ -37,27 +36,27 @@ fun CalendarHeader(
             modifier = Modifier.padding(top = 16.dp),
             color = Color.White)
         Row() {
-            if (!showOnlyYear) {
+            if (calendarType != CalendarType.ONLY_YEAR) {
                 Text(
                     text = monthText,
                     fontSize = 35.sp,
                     modifier = Modifier
                         .padding(bottom = 20.dp,
-                            start = if (showOnlyMonth) 0.dp else 30.dp,
-                            end = if (showOnlyMonth) 0.dp else 10.dp)
+                            start = if (calendarType == CalendarType.ONLY_MONTH) 0.dp else 30.dp,
+                            end = if (calendarType == CalendarType.ONLY_MONTH) 0.dp else 10.dp)
                         .clickable { setShowMonths(true) },
                     color = if (showMonths) Color.White else Color.LightGray)
             }
-            if (!showOnlyMonth && !showOnlyYear){
+            if (calendarType != CalendarType.ONLY_MONTH && calendarType != CalendarType.ONLY_YEAR){
                 Text(text = "/",fontSize = 35.sp,color = Color.White)
             }
-            if (!showOnlyMonth) {
+            if (calendarType != CalendarType.ONLY_MONTH ) {
                 Text(text = selectedYear.toString(),
                     fontSize = 35.sp,
                     modifier = Modifier
                         .padding(bottom = 20.dp,
-                            start = if (showOnlyYear) 0.dp else 10.dp,
-                            end = if (showOnlyYear) 0.dp else 30.dp)
+                            start = if (calendarType == CalendarType.ONLY_YEAR) 0.dp else 10.dp,
+                            end = if (calendarType == CalendarType.ONLY_YEAR) 0.dp else 30.dp)
                         .clickable { setShowMonths(false) },
                     color = if (showMonths) Color.LightGray else Color.White)
             }
