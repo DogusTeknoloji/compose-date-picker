@@ -3,16 +3,13 @@ package com.dt.composedatepicker
 import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
 import java.text.DateFormatSymbols
 import java.util.*
 
@@ -118,7 +115,8 @@ fun ComposeCalendar(
 
     Card(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxSize(),
+        shape = RoundedCornerShape(16.dp)
     ) {
         Column(modifier = Modifier.fillMaxSize()) {
             CalendarHeader(
@@ -131,7 +129,7 @@ fun ComposeCalendar(
                 themeColor = themeColor,
                 monthViewType = monthViewType
             )
-            if (calendarType == CalendarType.ONE_SCREEN_MONTH_AND_YEAR){
+            if (calendarType == CalendarType.ONE_SCREEN_MONTH_AND_YEAR) {
                 OneScreenMonthYear(
                     selectedMonth = selectedMonth,
                     setMonth = setMonth,
@@ -146,7 +144,7 @@ fun ComposeCalendar(
                     themeColor = themeColor,
                     unselectedColor = unselectedColor,
                     setYear = setYear
-                    )
+                )
             } else {
                 Crossfade(targetState = showMonths) {
                     when (it) {

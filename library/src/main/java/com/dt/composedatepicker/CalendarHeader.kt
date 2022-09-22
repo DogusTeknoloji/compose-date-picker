@@ -23,10 +23,11 @@ fun CalendarHeader(
     title: String,
     calendarType: CalendarType,
     themeColor:Color,
-    monthViewType: MonthViewType?
+    monthViewType: MonthViewType?,
 ) {
     val monthAsNumber = String.format("%02d",selectedMonth.index.plus(1))
     val monthText = if (monthViewType==MonthViewType.ONLY_MONTH) selectedMonth.name.uppercase() else monthAsNumber
+
     Column(modifier = Modifier
         .fillMaxWidth()
         .background(themeColor),
@@ -45,7 +46,11 @@ fun CalendarHeader(
                             start = if (calendarType == CalendarType.ONLY_MONTH) 0.dp else 30.dp,
                             end = if (calendarType == CalendarType.ONLY_MONTH) 0.dp else 10.dp)
                         .clickable { setShowMonths(true) },
-                    color = if (showMonths) Color.White else Color.LightGray)
+                    color = if (calendarType == CalendarType.ONE_SCREEN_MONTH_AND_YEAR){
+                        Color.White
+                    } else {
+                        if (showMonths) Color.White else Color.LightGray
+                    })
             }
             if (calendarType != CalendarType.ONLY_MONTH && calendarType != CalendarType.ONLY_YEAR){
                 Text(text = "/",fontSize = 35.sp,color = Color.White)
@@ -58,7 +63,11 @@ fun CalendarHeader(
                             start = if (calendarType == CalendarType.ONLY_YEAR) 0.dp else 10.dp,
                             end = if (calendarType == CalendarType.ONLY_YEAR) 0.dp else 30.dp)
                         .clickable { setShowMonths(false) },
-                    color = if (showMonths) Color.LightGray else Color.White)
+                    color =  if (calendarType == CalendarType.ONE_SCREEN_MONTH_AND_YEAR){
+                        Color.White
+                    } else {
+                        if (showMonths) Color.LightGray else Color.White
+                    })
             }
         }
     }
