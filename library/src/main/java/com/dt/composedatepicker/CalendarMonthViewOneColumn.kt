@@ -30,14 +30,15 @@ fun CalendarMonthViewOneColumn(
     setShowMonths: (Boolean) -> Unit,
     showOnlyMonth: Boolean,
     themeColor: Color,
-    unselectedColor: Color
+    unselectedColor: Color,
+    modifier: Modifier = Modifier
+        .fillMaxHeight(0.85f)
+        .fillMaxWidth()
+        .padding(10.dp),
 ) {
 
     LazyColumn(
-        modifier = Modifier
-            .fillMaxHeight(0.85f)
-            .fillMaxWidth()
-            .padding(10.dp),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(items = monthList) { item ->

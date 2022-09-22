@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.sp
 import com.dt.calendarwork.ui.theme.CalendarWorkTheme
+import com.dt.composedatepicker.CalendarType
 import com.dt.composedatepicker.ComposeCalendar
 import com.dt.composedatepicker.MonthViewType
 import com.dt.composedatepicker.SelectDateListener
@@ -37,12 +38,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val calendar = Calendar.getInstance()
-    calendar.set(Calendar.YEAR, 2022)
+    calendar.set(Calendar.YEAR, 1999)
     calendar.set(Calendar.MONTH, 1)
     calendar.set(Calendar.DAY_OF_MONTH, 1)
 
     val calendarMax = Calendar.getInstance()
-    calendarMax.set(Calendar.YEAR, 2023)
+    calendarMax.set(Calendar.YEAR, 2044)
     calendarMax.set(Calendar.MONTH, 0)
     calendarMax.set(Calendar.DAY_OF_MONTH, 1)
 
@@ -73,10 +74,11 @@ fun MainScreen() {
                     locale = Locale("en"),
                     title = "Select Date",
                     buttonTextSize = 15.sp,
+                    calendarType = CalendarType.ONE_SCREEN_MONTH_AND_YEAR,
                     monthViewType = MonthViewType.ONLY_NUMBER_ONE_COLUMN,
                     listener = object : SelectDateListener {
                         override fun onDateSelected(date: Date) {
-                            Log.i("DENEME", date.toString())
+                            Log.i("Selected Date: ", date.toString())
                         }
 
                         override fun onCanceled() {
