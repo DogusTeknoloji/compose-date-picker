@@ -10,7 +10,7 @@ Support for Android 5.0 (API level 21) and up.
 |--|--|
 | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20%283%29.png?raw=true) | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(5).png)  | 
 |||
-| ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(4).png) 
+| ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(4).png) | ![enter image description here](https://github.com/DogusTeknoloji/compose-date-picker/blob/main/screenshots/ss%20(6).png) 
 ## Implementation
 Add it in your root build.gradle at the end of repositories:
 
@@ -25,7 +25,7 @@ allprojects {
 The easiest way to add the Compose Date Picker library to your project is by adding it as a dependency to your  `build.gradle`
 ```gradle
 dependencies {
-	implementation 'com.github.DogusTeknoloji:compose-date-picker:1.0.9'
+	implementation 'com.github.DogusTeknoloji:compose-date-picker:1.1.0'
 }
 ```
 ## Usage Compose Date Picker
@@ -36,8 +36,7 @@ dependencies {
       locale: Locale = Locale.getDefault(),  // Set locale for localization
       title: String = "",  // Set title 
       listener: SelectDateListener, // Set Listener for selected date
-      showOnlyMonth: Boolean = false,  // Display only month picker
-      showOnlyYear: Boolean = false,  // Display only year picker
+      calendarType: CalendarType = CalendarType.MONTH_AND_YEAR, // Set calendar type for ui type
       themeColor: Color = Color(0xFF614FF0), // Set picker color 
       unselectedColor: Color = Color.White, // Set unselectedText color, when using dark mode you need to handle it
       negativeButtonTitle:String = "CANCEL",  // Set negative button text
@@ -59,6 +58,15 @@ dependencies {
         ONLY_NUMBER,
         ONLY_NUMBER_ONE_COLUMN, // Just like Year view
         BOTH_NUMBER_AND_MONTH
+    }
+    
+**CalendarType**
+
+    enum class CalendarType {
+        ONLY_MONTH,
+        ONLY_YEAR,
+        MONTH_AND_YEAR,
+        ONE_SCREEN_MONTH_AND_YEAR
     }
     
 **Compose Sample**
