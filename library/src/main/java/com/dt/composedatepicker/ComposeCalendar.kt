@@ -143,7 +143,8 @@ fun ComposeCalendar(
                     showOnlyMonth = calendarType == CalendarType.ONLY_MONTH,
                     themeColor = themeColor,
                     unselectedColor = unselectedColor,
-                    setYear = setYear
+                    setYear = setYear,
+                    monthViewType = monthViewType
                 )
             } else {
                 Crossfade(targetState = showMonths) {
@@ -162,7 +163,8 @@ fun ComposeCalendar(
                                     monthList = monthList,
                                     showOnlyMonth = calendarType == CalendarType.ONLY_MONTH,
                                     themeColor = themeColor,
-                                    unselectedColor = unselectedColor
+                                    unselectedColor = unselectedColor,
+                                    monthViewType = monthViewType
                                 )
                             } else {
                                 CalendarMonthView(
